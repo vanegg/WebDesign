@@ -1,0 +1,49 @@
+.container {
+  margin: 0 auto;
+  width: 768px;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+nav {
+  margin: 0 auto;
+  height: 503px;
+  width: 15%;
+  background-color: #A4A4A4;
+  float: right;
+}
+
+ul {
+  padding-top: 8px;
+  padding-left: 0px;
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+ a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.content {
+  width: 84%;
+  float: left;
+}
+.footer {
+  border-top: solid 1px;
+  width: 100%;
+  clear: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
