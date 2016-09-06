@@ -1,0 +1,114 @@
+<h1>Bienvenido a Sinatra!</h1>
+<p>Este es un esqueleto de sinatra que armamos para ti</p>
+
+<form action= "/cool_url" method= "GET">
+  <fieldset>
+    <legend>Personal information:</legend>
+  LLAMADA GET 
+
+  <br>
+    <!-- EXAMPLE INPUT TEXT -->
+    FIRST NAME:
+    <input type="text" placeholder="name" name="name">
+    LAST NAME:
+    <input type="text" placeholder="lastname" name="lastname">
+  </br>
+
+  <!-- EXAMPLE TEXT AREA -->
+  <br>  
+    DESCRIPCION:
+    <textarea cols="40" rows="5" name="description">
+      Please write a description.
+    </textarea>  </br>
+
+  <!-- EXAMPLE RADIO BUTTON -->
+  <br>
+    GENERO:
+    <br>
+    <input type="radio" name="genre" value="Femenino" checked > Femenino
+    <input type="radio" name="genre" value="Masculino" > Masculino
+  </br>
+
+  <!-- EXAMPLE INPUT CHECKBOX -->
+  <br>
+  INTERESES:
+  <br>
+  <input type="checkbox" name="option1" value="Foto"> Fotografía<br>
+  <input type="checkbox" name="option2" value="Viajes" checked> Viajes<br>
+  <input type="checkbox" name="option3" value="Gente" checked> Conocer Gente<br>
+
+
+  <!-- EXAMPLE SELECT -->
+  <br>
+    EDAD:
+  <select name="age">
+  <option value="kid">1-12</option>
+  <option value="teen">12-17</option>
+  <option value="adult">18-...</option>
+</select>
+  </br>
+  <!-- EXAMPLE INPUT SUBMIT -->
+  <br>
+    <input type="submit" value="Submit GET!" />
+  </br>
+</fieldset>
+</form>
+
+
+<form action="/cool_url" method="POST">
+    <fieldset>
+    <legend>Personal information:</legend>
+  <br></br>
+  LLAMADA POST  <br>
+ <br>
+    <!-- EXAMPLE INPUT TEXT -->
+    FIRST NAME:
+    <input type="text" placeholder="name" name="name">
+    LAST NAME:
+    <input type="text" placeholder="lastname" name="lastname">
+  </br>
+
+  <!-- EXAMPLE TEXT AREA -->
+  <br>  
+    DESCRIPCION:
+    <textarea cols="40" rows="5" name="description">
+      Please write a description.
+    </textarea>  </br>
+
+  <!-- EXAMPLE RADIO BUTTON -->
+  <br>
+    GENERO:
+    <br>
+    <input type="radio" name="genre" value="Femenino" checked > Femenino
+    <input type="radio" name="genre" value="Masculino" > Masculino
+  </br>
+
+  <!-- EXAMPLE INPUT CHECKBOX -->
+  <br>
+  INTERESES:
+  <br>
+  <input type="checkbox" name="option1" value="Foto"> Fotografía<br>
+  <input type="checkbox" name="option2" value="Viajes" checked> Viajes<br>
+  <input type="checkbox" name="option3" value="Gente" checked> Conocer Gente<br>
+
+
+  <!-- EXAMPLE SELECT -->
+  <br>
+    EDAD:
+  <select name="age">
+  <option value="kid">1-12</option>
+  <option value="teen">12-17</option>
+  <option value="adult">18-...</option>
+</select>
+  </br>
+
+  <input type="text" name="post[title]">
+<input type="text" name="post[price]">
+<textarea name="post[description]"></textarea>
+
+  <!-- EXAMPLE INPUT SUBMIT -->
+  <br>
+    <input type="submit" value="Submit POST!" />
+  </br>
+    </fieldset>
+</form>
