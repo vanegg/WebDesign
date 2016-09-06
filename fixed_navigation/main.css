@@ -1,0 +1,41 @@
+.container {
+  margin: 0 auto;
+  width: 768px;
+}
+
+.content {
+  padding-top: 50px;
+}
+
+.top-nav {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+}
+
+ul {
+  height: auto;
+  margin: -40px auto;
+  padding: 0;
+  list-style: none;
+  margin-left: 300px;
+}
+
+li {
+  display: inline-block;
+}
+
+ul a {
+  display: block;
+  padding: 6px 32px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fefefe;
+}
+
+.footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
