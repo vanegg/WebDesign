@@ -1,0 +1,12 @@
+<h1>Find Anagrams!</h1>
+
+<% if @new_word %>
+  <p>Estos son anagramas para '<%= @new_word %>':</p>
+  <% i = 1 %>
+  <% @anagrams.each  do |anagram|%>
+  <p><%= i %>. <%= anagram %></p>
+  <% i += 1 %>
+  <% end %>
+<% end %>
+
+<%= erb :view_partial %>
