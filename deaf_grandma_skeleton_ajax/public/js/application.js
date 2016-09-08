@@ -4,8 +4,7 @@ $(document).ready(function() {
     event.preventDefault();
     data = $(this).serialize();
     $.post('/abuelita',data).done(function(data) {
-      $("#grandma_says").empty();
-      $("#grandma_says").append(data);
+      $("#grandma_ajax").html("Tu Abuelita dice:" + data);
     })
   });
 });

@@ -1,0 +1,43 @@
+  <h1>Bienvenido a Sinatra!</h1>
+
+
+<form action="/urls" method="POST">
+  <fieldset>
+    <legend>URL SHORTENER:</legend>
+    
+    <br>
+    <!-- EXAMPLE INPUT TEXT -->
+    Escribe tu url:
+    <input type="text" placeholder="url" name="long_url">  
+
+  <!-- EXAMPLE INPUT SUBMIT -->
+ 
+    <input type="submit" value="SHORTEN!" />
+
+    </br>
+  </fieldset>
+</form>
+    <br>
+    <br>
+
+<% if @short_url %>
+
+  <p>TU URL corta es: http://lala.ly/<%= @short_url %> </p>
+
+<form action="/urlshort" method="POST">
+  <fieldset>
+    <legend>GO TO URL:</legend>
+    
+    <br>
+    <!-- EXAMPLE INPUT TEXT -->
+    Escribe tu url corta: http://lala.ly/
+    <input type="text" placeholder="url" name="short_url">  
+
+  <!-- EXAMPLE INPUT SUBMIT -->
+ 
+    <input type="submit" value="GO TO URL!" />
+
+    </br>
+  </fieldset>
+</form>
+<% end %>
