@@ -1,5 +1,20 @@
   <h1>Bienvenido a Sinatra!</h1>
 
+      <% if @notlog%>
+      <p> **Necesitas hacer log in para entrar a la página secreta.**</p>
+    <%end%>
+
+  <p> Inicia sesión o Registrate</p>
+
+  <form action="/signup" method="GET">
+    <input type="submit" value="Sign Up!" />
+  </form>
+  <br>
+
+  <form action="/login" method="GET">
+    <input type="submit" value="Log in!" />
+  </form>
+ <br>
 
 <form action="/urls" method="POST">
   <fieldset>

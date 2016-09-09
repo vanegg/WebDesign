@@ -7,6 +7,11 @@ get '/' do
   erb :index
 end
 
+# get '/' do
+#   @notlog = params[:notlog]
+#   erb :index
+# end
+
 post '/urls' do
   url = Url.new(long_url: params[:long_url])
   if url.save 
