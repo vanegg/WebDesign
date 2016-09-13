@@ -51,7 +51,7 @@ div#slot-machine {
   margin: 0 auto;
 }
 
-#win {
+#win, #win_ajax {
   position: relative;
   top: 245px;
   /*left: 170px;*/

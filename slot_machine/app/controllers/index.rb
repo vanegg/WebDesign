@@ -19,8 +19,13 @@ post '/rolls' do
   else
     3.times { @rolls << Roll.create }
   end
+    @win = "WINNER!!" if @rolls.map! { |roll| roll.value }.uniq.count == 1
 
-  @win = "WINNER!!" if @rolls.map! { |roll| roll.value }.uniq.count == 1
-
-  erb :index  # TIP: Qué esté haciendo esto y qué debe hacer diferente.
+  if request.xhr?
+    #AJAX
+    erb :_die_roll ,layout: false
+  else
+    #HTML
+    erb :index # TIP: Qué esté haciendo esto y qué debe hacer diferente.
+  end  
 end
