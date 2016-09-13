@@ -1,0 +1,15 @@
+<h1>BLOG:</h1>
+<fieldset>
+  <legend>Tus POSTS: Los posts que tienes hasta el momento:</legend>
+
+  <% @posts.each do |post|%>
+    <fieldset>
+    <p id= 'title'><%= post.title%></p>
+    <p id= 'body'><%= post.body%></p>
+    <% post.tags.each do |tag|%>
+      <div id= 'tags'>#<%= tag.name%></div> 
+    <%end%>
+    </fieldset>
+  <%end%>
+
+</fieldset>
