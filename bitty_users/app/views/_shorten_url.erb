@@ -1,0 +1,44 @@
+<form action="/urls" method="POST">
+  <fieldset>
+    <legend>URL SHORTENER:</legend>
+    <%if @falla%>
+  <p>TU URL no es válida</p>
+  <%end%>
+    <br>
+    Escribe tu url:
+    <input type="text" placeholder="url" name="long_url">  
+    <input type="submit" value="SHORTEN!" />
+
+    </br>
+  </fieldset>
+</form>
+    <br>
+    <br>
+<% if @urls %>
+<p>URLs creadas: </p>
+<p>Visitas      URL</p>
+<% @urls.each do |url|%>
+  <p><%= url.click_count%>. http://lala.ly/<%= url.short_url%> </p>
+<%end%>
+
+<%if @short_url%>
+  <p>TU URL corta es: http://lala.ly/<%= @short_url %> </p>
+  <%end%>
+
+<form action="/urlshort" method="POST">
+  <fieldset>
+    <legend>GO TO URL:</legend>
+    
+    <br>
+    <!-- EXAMPLE INPUT TEXT -->
+    Escribe tu url corta: http://lala.ly/
+    <input type="text" placeholder="url" name="short_url">  
+
+  <!-- EXAMPLE INPUT SUBMIT -->
+ 
+    <input type="submit" value="GO TO URL!" />
+
+    </br>
+  </fieldset>
+</form>
+<% end %>

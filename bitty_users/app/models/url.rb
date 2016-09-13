@@ -10,6 +10,10 @@ class Url < ActiveRecord::Base
     self.short_url = @short_url
   end
 
+  # def create_id_user
+  #   self.user_id = 
+  # end
+
   def self.find_url_complete(url)
     Url.find_by(short_url: url)    
   end

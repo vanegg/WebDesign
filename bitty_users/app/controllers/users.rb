@@ -7,15 +7,15 @@ before '/users/:id' do
 end
 
 get '/users/:id' do
-    @user = User.find(params[:id])
-    erb :secret
+  @user = User.find(params[:id])
+  erb :profile
 end
 
 post '/signup' do
   user = User.new(name: params[:name], email: params[:email], password: params[:password])
   if user.save
     @falla = false
-  redirect to ("/")
+    redirect to ("/")
   else
     @falla = true
     erb :sign_up
