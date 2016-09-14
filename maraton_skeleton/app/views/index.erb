@@ -1,0 +1,19 @@
+  <h1>¡MARATON!</h1>
+
+  <fieldset>
+  <legend>POSTS ENCONTRADOS:</legend>  
+      <% if @notlog%>
+      <p> **Necesitas hacer log in para entrar a la página secreta.**</p>
+    <%end%>
+
+  <p> Inicia sesión o Registrate para entrar al Maraton</p>
+
+  <form action="/signup" method="GET">
+    <input type="submit" value="Sign Up!" />
+  </form>
+  <br>
+
+  <form action="/login" method="GET">
+    <input type="submit" value="Log in!" />
+  </form>
+    </fieldset>

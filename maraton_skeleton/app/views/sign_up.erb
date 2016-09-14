@@ -1,0 +1,26 @@
+<p>Por favor registrate:</p>
+
+  <form action="/signup" method="POST">
+  <fieldset>
+    <legend>SIGN UP:</legend>
+    <% if @falla%>
+      <p> Algún valor es inválido, revisa tus datos</p>
+    <%end%>
+    <br>
+    Nombre:   
+    <input type="text" placeholder="name" name="name">  
+    <br>
+    Email:    
+    <input type="text" placeholder="email" name="email">
+    <br>
+    Contraseña: 
+    <input type="text" placeholder="password" name="password">  
+  <!-- EXAMPLE INPUT SUBMIT -->
+    <br>
+    <br>
+    <input type="submit" value="Sign Up!" />
+    
+    </br>
+  </fieldset>
+</form>
+<%= erb :_return %>

@@ -1,0 +1,18 @@
+  <h1>¡MARATON!</h1>
+  <h3>Bienvenido <%=@user.name%> :)</h3>
+
+  <fieldset>
+     <legend>Escoge tu Deck para empezar a jugar: </legend>
+     <%@deck.each do |deck|%>
+     <form action='/play/<%=deck.name%>' method="POST">  
+        <input type="submit" name:'deck' value="<%=deck.name%>" />
+    </form>
+    <%end%>
+    <br>
+  </fieldset>
+    <br>
+    <form action='/statistics' method="POST">  
+        <input type="submit" name:'deck' value="Estadisticas" />
+    </form>
+    <br>
+    <%= erb :_return %>
