@@ -6,7 +6,7 @@
   <legend>POSTS:</legend>
 
   <br>
-  <form  method="POST"> 
+  <form action="/posts" method="POST"> 
     <input type="text" placeholder="Título" name="title">
     <br>
     <br>
@@ -22,18 +22,16 @@
       <input type="submit" value="Mostrar Todos!" />
   </form>
 
-  <form method="POST">  
+<br>
+
+<form action= "/posts_get" method="POST">
+      <p>Di el título del post que deseas encontrar!</p>
+      <input type="text" placeholder="Título" name="title">
       <input type="submit" value="Buscar por título" />
   </form>
-
-  <form method="POST">  
-      <input type="submit" value="Editar" />
-  </form>
-
-  <form method="POST">  
-      <input type="submit" value="Eliminar" />
-  </form>
-
+<% if @falla%>
+      <p> Post no encontrado</p>
+    <%end%>
   </fieldset>
 
 

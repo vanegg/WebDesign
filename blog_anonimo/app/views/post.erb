@@ -1,6 +1,6 @@
 <h1>BLOG:</h1>
 <fieldset>
-  <legend>Tus POSTS: </legend>
+  <legend>Tu POST: Se encontró tu post:</legend>
 
   <% @posts.each do |post|%>
   <fieldset>
@@ -11,10 +11,13 @@
     <%end%>
   </fieldset>
     
-    <form class= "btn_edit" action= method="POST">  
+    <form class= "btn_edit" method="POST">  
         <input type="submit" value="Editar" />
     </form>
-    <a href= "/posts/delete/<%=post.id%>">Eliminar</a>
+
+    <form class= "btn_delete" method="POST">  
+        <input type="submit" value="Eliminar" />
+    </form>
   <%end%>
 </fieldset>
 
