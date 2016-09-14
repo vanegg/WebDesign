@@ -1,0 +1,31 @@
+<h1>BLOG:</h1>
+<fieldset>
+  <legend>Edita tu Post: </legend>
+
+  <fieldset>
+
+  <form class= "btn_edit" action='/posts/edit' method="POST"> 
+    <input type="hidden" placeholder="Id" value="<%=@post.id%>" name="id">
+    <input type="hidden" placeholder="Id" value="<%=@tags%>" name="original_tags">
+    Título:
+    <input type="text" placeholder="Título" value="<%=@post.title%>" name='title'>
+    <br>
+    <br>
+    Post:
+    <textarea cols="40" rows="5" placeholder= "Postea!" name="body"><%=@post.body%></textarea>
+    <br>
+    <br>
+    Tags:
+    <input type="text" placeholder="Tags" value="<%=@tags%>"name="tags">
+    <br>
+    <br>
+    <input type="submit" value="Editar!">
+  </form>
+
+
+  </fieldset>
+</fieldset>
+
+    <form action='/' method="GET">  
+        <input type="submit" value="Regresar" />
+    </form>

@@ -3,8 +3,13 @@
   <p> Hola! Haz un nuevo post o revisa los que ya tienes! :) </p>
 
 <fieldset>
-  <legend>POSTS:</legend>
+  <legend>POSTS ENCONTRADOS:</legend>
 
+    <% if @errors_post%>
+      <%@post.errors.messages.each do |key,error|%>
+      <p> The field <%=key%> <%=error[0]%> </p>    
+      <%end%>
+  <%end%>
   <br>
   <form action="/posts" method="POST"> 
     <input type="text" placeholder="Título" name="title">
@@ -13,6 +18,7 @@
     <textarea cols="70" rows="5" placeholder= "Postea!" name="body"> </textarea>
     <br>
     <br>
+    Tags: e.g. "tag1,tag2,tag3" 
     <input type="text" placeholder="Tags" name="tags">
     <input type="submit" value="Crear!" />
   </form>
@@ -29,9 +35,9 @@
       <input type="text" placeholder="Título" name="title">
       <input type="submit" value="Buscar por título" />
   </form>
-<% if @falla%>
+  <% if @noPost%>
       <p> Post no encontrado</p>
-    <%end%>
+  <%end%>
   </fieldset>
 
 
@@ -41,5 +47,8 @@
       <p>Di el tag de los posts que deseas encontrar!</p>
       <input type="text" placeholder="Tag" name="name">
       <input type="submit" value="Mostrar Todos!" />
+       <% if @noTag%>
+        <p> Tag no encontrado</p>
+      <%end%>
   </form>
   </fieldset>
