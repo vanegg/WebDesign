@@ -1,7 +1,13 @@
 post '/play/:name' do
   p params
-  erb :play
+  @deck = Deck.find_by(name: params[:name])
+  ran = rand(@deck.cards.length)
+  redirect("/play/#{params[:name]}/:id")
 end
+
+ get '/play/:name/:id' do
+  
+ end
 
 post '/statistics' do
   p params
