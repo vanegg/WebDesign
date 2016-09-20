@@ -21,6 +21,8 @@ end
 get '/users/:id' do
     @user = User.find(params[:id])
     @deck = Deck.all
+    @round = Round.create()
+    @user.rounds << @round
     erb :profile
 end
 

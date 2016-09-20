@@ -1,14 +1,9 @@
   <h1>¡MARATON!</h1>
 
   <fieldset>
-  <legend>Responde correctamente:</legend>  
+  <legend>Responde correctamente:</legend> 
+    <p>Intento: #<%=@try%></p>
+    <div id="current_question"><%= erb :_question %></div>
+  </fieldset>
 
-  <form action="/signup" method="GET">
-    <input type="submit" value="Sign Up!" />
-  </form>
-  <br>
-
-  <form action="/login" method="GET">
-    <input type="submit" value="Log in!" />
-  </form>
-    </fieldset>
+  <%= erb :_return %>

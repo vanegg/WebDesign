@@ -1,0 +1,15 @@
+  <br>
+  <p><%=@cards.question%></p>
+  <%i = 1%>
+  Respuestas:
+  <br>
+  <form id="question" action= '/<%=@user_id%>/play/<%=@deck.name%>/<%=@num_card%>' method= "POST">
+    <% @answers.each do |answer|%>
+      <input type="radio" name="answer" value="<%=answer%>" > <%=i%>. <%=answer%>
+      <%i += 1%>
+    <%end%>
+    <br>
+    <br>
+      <input type="hidden" name="num_card" value="@num_card">  
+      <input type="submit" value="Siguiente" />
+  <br>
