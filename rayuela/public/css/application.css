@@ -56,6 +56,7 @@ button:hover {
 }
 
 .table td.active {
+  /*background-image: url("https://lh6.googleusercontent.com/-CYt37hfDnQ8/T3nNydojf_I/AAAAAAAAAr0/P5OtlZxV4rk/s32/facebook32.png");*/
   background-color: black;
 }
 
@@ -66,6 +67,7 @@ button:hover {
 }
 
 #index {
+  display: none;
   float: left;
   font-size: 20px;
 }
@@ -73,4 +75,8 @@ button:hover {
 #result {
   float: right;
   font-size: 20px;
+}
+
+.winner td {
+   background-color: #A5DF00;
 }
