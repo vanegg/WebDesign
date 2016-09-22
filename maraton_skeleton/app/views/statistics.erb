@@ -1,1 +1,34 @@
-Estadisticas
+<h1>¡MARATON!</h1>
+
+<fieldset>
+<legend>Las estadísticas de <%=@user.name%> son:</legend>
+<p>Rounds Totales: <%=@user.rounds.length%></p>
+
+<table>
+  <tr>
+    <th>Round</th>
+    <th>Deck</th>
+    <th>Guess</th>
+    <th>Intentos</th>
+    <th>Resultado</th>
+  </tr>
+<!-- AQUI ME QUEDEEEEEEEEEEEEEEEEEEEEEEEEEE -->
+  <%@user.rounds.each do |round|%>
+    <%round.guesses.each do |guess|%>
+      <tr>
+        <td><%=round.id%></td>
+        <!-- CORREGIR POR EL DECK LA SIGUIENTE LINEA -->
+        <td><%=round.id%></td>  
+        <td><%=guess.id%></td> 
+        <td><%=guess.tries%></td>
+        <td><%=guess.result%></td>
+      </tr>
+    <%end%>
+  <%end%>
+
+</table>
+
+</fieldset>
+<%= erb :_return %>
+
+<%=%>
