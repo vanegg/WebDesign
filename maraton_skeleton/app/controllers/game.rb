@@ -11,8 +11,10 @@ get '/:user_id/play/:deck_name/:num_card' do
       guess.result = true
       guess.save()
       @num_card = (params[:num_card].to_i + 1).to_s
-      intento = Guess.create(tries: 1, result: false)
-      @user.rounds.last.guesses << intento
+      if (@num_card.to_i < @deck.cards.length)
+        intento = Guess.create(tries: 1, result: false)
+        @user.rounds.last.guesses << intento
+      end
     else
       puts "Respuesta incorrecta"
       guess = @user.rounds.last.guesses.last
@@ -35,8 +37,7 @@ get '/:user_id/play/:deck_name/:num_card' do
     @answers = [@cards.answer, @cards.fake_answer1, @cards.fake_answer2].shuffle
     erb :play
   else
-
-    erb :statistics
+    erb :result
   end
 end
 
@@ -53,5 +54,8 @@ post '/:user_id/play/:deck_name' do
 end
 
 post '/statistics' do
+  p params
+  user_id = params[:user_id]
+  @user = User.find(user_id)
   erb :statistics
 end

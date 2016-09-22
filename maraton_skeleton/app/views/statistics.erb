@@ -12,16 +12,20 @@
     <th>Intentos</th>
     <th>Resultado</th>
   </tr>
-<!-- AQUI ME QUEDEEEEEEEEEEEEEEEEEEEEEEEEEE -->
   <%@user.rounds.each do |round|%>
+  <%i = 1%>
     <%round.guesses.each do |guess|%>
       <tr>
         <td><%=round.id%></td>
-        <!-- CORREGIR POR EL DECK LA SIGUIENTE LINEA -->
-        <td><%=round.id%></td>  
-        <td><%=guess.id%></td> 
+        <td><%=Deck.find(round.deck_id).name%></td>  
+        <td><%=i%></td> 
         <td><%=guess.tries%></td>
-        <td><%=guess.result%></td>
+        <%if guess.result == true%>
+        <td>Correcto</td>
+        <%else%>
+         <td>Incorrecto</td>
+        <%end%>
+        <%i += 1%>
       </tr>
     <%end%>
   <%end%>
@@ -30,5 +34,3 @@
 
 </fieldset>
 <%= erb :_return %>
-
-<%=%>

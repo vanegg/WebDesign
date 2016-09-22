@@ -1,0 +1,33 @@
+<h1>¡MARATON!</h1>
+
+<fieldset>
+<legend>Las estadísticas de <%=@user.name%> son:</legend>
+<p>Round: <%=@user.rounds.last.id%></p>
+<%round = Round.find(@user.rounds.last.id)%>
+<p>Deck: <%= Deck.find(round.deck_id).name%></p>
+
+<table>
+  <tr>
+    <th>Guess</th>
+    <th>Intentos</th>
+    <th>Resultado</th>
+  </tr>
+
+<%i = 1%>
+  <%round.guesses.each do |guess|%>
+    <tr>
+      <td><%=i%></td> 
+      <td><%=guess.tries%></td>
+      <%if guess.result == true%>
+        <td>Correcto</td>
+      <%else%>
+         <td>Incorrecto</td>
+      <%end%>
+      <%i += 1%>
+    </tr>
+  <%end%>
+
+    </table>
+
+</fieldset>
+<%= erb :_return %>
