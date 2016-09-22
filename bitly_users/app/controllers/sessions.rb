@@ -4,13 +4,13 @@ end
 
 post '/login' do
   user = User.authenticate(params[:email],params[:password])
-   if user != nil
+  if user != nil
      session[:id] = user.id
      redirect to ("/users/#{user.id}")
-   else
+  else
     @falla = true
     erb :login
-   end
+  end
 end
 
 post '/logout' do

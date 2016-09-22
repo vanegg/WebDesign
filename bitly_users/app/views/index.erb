@@ -1,8 +1,8 @@
-  <h1>Bienvenido a Sinatra!</h1>
+  <h1>Bitly Con Usuarios!</h1>
 
     <p> Inicia sesión o Registrate</p>
-
-    <form action="/signup" method="GET">
+    
+    <form action='/sign' method="GET">
       <input type="submit" value="Sign Up!" />
     </form>
     <br>
@@ -11,4 +11,30 @@
     </form>
     <br>
 
-<%= erb :_shorten_url %>
+    <form action="/urls/unregistred" method="GET">
+  <fieldset> <legend>URL SHORTENER:</legend>
+    <%if @falla%>
+  <p>TU URL no es válida</p>
+  <%end%>
+    <br>
+    Escribe tu url:
+    <input type="text" placeholder="url" name="long_url">  
+    <input type="submit" value="SHORTEN!" />
+    </br>
+  </fieldset>
+</form>
+
+    <%if @urls%>
+<table>
+    <tr>
+    <th>No Clicks</th>
+    <th>Link</th>
+  </tr>
+  <% @urls.each do |url|%>
+    <tr>
+      <td><%=url.click_count%></td>
+      <td><a href="/url/<%=url.short_url%>">http://lala.ly/<%=url.short_url%></a></td>
+    </tr>    
+  <%end%>
+  </table>
+  <%end%>

@@ -10,24 +10,17 @@ class Url < ActiveRecord::Base
     self.short_url = @short_url
   end
 
-  # def create_id_user
-  #   self.user_id = 
-  # end
-
-  def self.find_url_complete(url)
-    Url.find_by(short_url: url)    
-  end
-
   def self.find_url(url)
     Url.increment_count_visits(url)
-    Url.find_url_complete(url).long_url
+    Url.find_by(short_url: url).long_url
   end
 
   def self.increment_count_visits(url)
-    complete_url = Url.find_url_complete(url)
-    complete_url.click_count += 1
-    complete_url.save()
+    if Url.exists?(short_url: url)
+      complete_url = Url.find_by(short_url: url)
+      complete_url.click_count += 1
+      complete_url.save()
+    end
   end
-
 
 end

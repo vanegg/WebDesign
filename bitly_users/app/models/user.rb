@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
   def self.authenticate(email, password)
-    user = User.find_by(email: email)
-    user.password === password ? user : nil
+    if User.exists?(email: email)
+      user = User.find_by(email: email)
+      user.password === password ? user : nil
+    else
+      nil
+    end
   end
 end

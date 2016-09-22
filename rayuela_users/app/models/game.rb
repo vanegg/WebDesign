@@ -12,12 +12,4 @@ class Game < ActiveRecord::Base
       errors.add(:players, "there are two players already")
     end
   end
-
-  def name_validate
-    if (name == "HOLA")
-      errors.add(:name, "is not a name")
-    end
-  end
-
-
 end

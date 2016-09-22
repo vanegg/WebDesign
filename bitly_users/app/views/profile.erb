@@ -2,11 +2,24 @@
 
 <% if logged_in? %>
 
-    <p>Bienvenid@ <%= current_user.name%> :) </p>
-    <form action="/logout" method="POST">
+  <p>Bienvenid@ <%= current_user.name%> :) </p>
+  <form action="/logout" method="POST">
       <input type="submit" value="Log Out!" />
-    </form>
-    <br>
-    <%= erb :_shorten_url %>
+  </form>
+  <br>
+  <%= erb :_shorten_url %>
+  <table>
+    <tr>
+    <th>No Clicks</th>
+    <th>Link</th>
+  </tr>
+  <% current_user.urls.each do |url|%>
+    <tr>
+      <td><%=url.click_count%></td>
+      <td><a href="/url/<%=url.short_url%>">http://lala.ly/<%=url.short_url%></a></td>
+    </tr>    
+  <%end%>
+  </table>
+  
 
 <% end %>
