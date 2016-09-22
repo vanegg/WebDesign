@@ -1,0 +1,37 @@
+<header>
+  <img src="img/codea-logo.png" id="logo">
+</header>
+
+<h1 id="main-title">¡RAYUELA!</h1>
+<h3 id="bnv_players" >Bienvenidos: <%=@player1.name%> y <%=@player2.name%></h3>
+<p>Instrucciones: Da click en el botón Jugar para empezar el juego. Una vez que el contador llegue a cero, las monedas de ambos jugadores se lanzan al mismo tiempo. Trata de parar tu moneda lo mas cerca posible de la meta (línea roja). Presiona la tecla "A" para detener la moneda 1 y la tecla "L" para la moneda 2.</p>
+    <button id="start_btn">Jugar</button><br><br>
+    <p id="index">lala</p>
+    <p id="result"></p>
+    <table class="table">
+      <tr id="Player1" >
+        <td id="player1"><strong>Jugador 1</strong></td>
+        <td id= "0" class="active"></td>
+        <%100.times do |n|%>
+          <%if n == 85%>
+            <td id= "<%=n + 1%>" class="meta"></td>
+          <%else%>
+            <td id= "<%=n + 1%>"></td>
+          <%end%>
+        <%end%>
+      </tr>
+
+      <tr id="Player2">
+        <td id="player2"><strong>Jugador 2</strong></td>
+        <td id= "0" class="active"></td>
+        <%100.times do |n|%>
+          <%if n == 85%>
+            <td id= "<%=n + 1%>" class="meta"></td>
+          <%else%>
+            <td id= "<%=n + 1%>"></td>
+          <%end%>
+        <%end%>
+      </tr>
+</table>
+<br>
+<%= erb :_url, layout: false %>
