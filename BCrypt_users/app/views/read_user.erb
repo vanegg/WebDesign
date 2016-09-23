@@ -1,0 +1,23 @@
+<p>Por favor ingresa inicia sesión:</p>
+
+<form action="/user/login" method="POST">
+  <fieldset>
+    <legend>LOG IN:</legend>
+    <% if @falla%>
+      <p class= "fail"> Usuario no encontrado</p>
+    <%end%>
+    <br>
+    Email:    
+    <input type="text" placeholder="email" name="email">
+    <br>
+    Contraseña: 
+    <input type="text" placeholder="password" name="password">  
+    <br>
+    <br>
+    <input type="submit" value="Log in!" />
+    
+    </br>
+  </fieldset>
+</form>
+
+<%= erb :_return %>
