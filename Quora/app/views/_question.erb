@@ -1,0 +1,21 @@
+<%i = 1%>
+<%@questions.each do |question|%>
+<fieldset>
+    <legend>Question:</legend>
+    <% if @falla%>
+      <p class= "fail"> No question found</p>
+    <%end%>
+    <p><%=question.text%></p>
+    <br>
+    <p><%=question.votes.length%></p>
+    <!-- ME QUEDE AQUIIIIIIIIIIIIIIIIIIII -->
+    <form action="/vote" method="POST">
+        <input type="hidden" name= "question_id" value="<%=question.id%>" />
+        <input type="submit" value="Vote it!" />
+    </form>
+    <form action="/answer" method="GET">
+        <input type="submit" value="Answer it!" />
+    </form>
+  </fieldset>
+  <%i += 1%>
+<%end%>

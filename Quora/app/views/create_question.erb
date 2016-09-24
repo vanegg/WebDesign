@@ -1,0 +1,14 @@
+<%= erb :_head%>
+<fieldset>
+    <legend>Question:</legend>
+
+    <p>Please write your question:</p>
+
+    <form action="/vote" method="POST">
+          <textarea cols="40" rows="5" placeholder= "Question!" name="question"><%=%></textarea>
+    <br>
+        <input type="submit" value="Create!" />
+    </form>
+  </fieldset>
+
+<%= erb :_return%>

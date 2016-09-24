@@ -1,0 +1,24 @@
+<%= erb :_head%>
+<%i = 1%>
+<fieldset>
+  <legend>Users:</legend>
+  <table>
+    <% if @falla%>
+      <p class= "fail"> No user found</p>
+    <%end%>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <%@users.each do |user|%>
+      <tr>
+        <td><%=i%></td>
+        <td><%=user.name%></td>
+        <td><%=user.email%></td>
+      </tr>
+      <%i += 1%>
+    <%end%>
+  </table>
+</fieldset>
+<%= erb :_return%>

@@ -44,6 +44,12 @@ post '/user/login' do
    end
 end
 
+get '/users' do
+  @users = User.all
+  erb :all_users
+end
+# /******** END-READ USER ********/
+
 before '/users/:id' do
   puts "IN BEFORE /users/:id"
  if session[:id] == nil
@@ -55,9 +61,10 @@ end
 get '/users/:id' do
   puts "IN GET /users/:id"
   @user = User.find(params[:id])
+  @questions = Question.all
+  @question = Question.find(1)
   erb :profile
 end
-# /******** END-READ USER ********/
 
 # /********** UPDATE USER **********/
 
@@ -118,7 +125,28 @@ post '/user/delete' do
   end
 end
 # /******** END-DELETE USER ********/
-post '/logout' do
+get '/logout' do
   session.clear
   erb :index
+end
+
+get '/info' do
+  erb :update_info
+end
+
+#ME QUEDE AQUIIIIIIIIIIIIIIIIIIII
+post '/vote' do
+  question_id = params[:question_id]
+  question = Question.find(question_id)
+  vote = Vote.create()
+  current_user.votes << vote
+  question.votes << vote
+  current_user.save
+  question.save
+  @questions = Question.all
+  erb :profile
+end
+
+get '/question/new' do
+  erb :create_question
 end

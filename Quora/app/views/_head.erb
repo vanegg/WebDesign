@@ -1,0 +1,18 @@
+<h1>Quora Clon!</h1>
+
+<h2>BIENVENIDO <%= current_user.name %></h2>
+         
+<nav>
+  <ul>
+      <li><a href="/users/<%=current_user.id%>">Profile</a></li>
+      <li><a href="/question/new">Create Question</a></li>
+      <li><a href="#">Search Question</a></li>
+      <li><a href="#">See All Questions</a></li>
+      <li><a href="#">See My Questions</a></li>
+      <li><a href="#">See My Answers</a></li>
+      <li><a href="/users">See All Users</a></li>
+      <li><a href="/info">Update Information</a></li>
+      <li><a href="/logout">Logout</a></li>
+  </ul>
+  <br clear="all">
+</nav>
