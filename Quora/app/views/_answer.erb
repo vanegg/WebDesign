@@ -1,0 +1,16 @@
+<%i = 1%>
+<%question.answers.each do |answer|%>
+<fieldset>
+    <legend>Answer #<%=answer.id%>:</legend>
+    <% if @falla%>
+      <p class= "fail"> No answer found</p>
+    <%end%>
+    <p><%=answer.text%></p>
+    <p>Votes: <%=answer.votes.length%></p>
+    <form action="/vote" method="POST">
+      <input type="hidden" name= "answer_id" value="<%=answer.id%>" />
+      <input type="submit" value="Vote it!" />
+    </form>
+  </fieldset>
+  <%i += 1%>
+<%end%>

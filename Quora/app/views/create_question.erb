@@ -3,9 +3,11 @@
     <legend>Question:</legend>
 
     <p>Please write your question:</p>
-
-    <form action="/vote" method="POST">
-          <textarea cols="40" rows="5" placeholder= "Question!" name="question"><%=%></textarea>
+    <% if @falla%>
+      <p class= "fail"> No question create. Please try again</p>
+    <%end%>
+    <form action="/questions" method="POST">
+          <textarea cols="40" rows="5" placeholder="Question!" name="text"></textarea>
     <br>
         <input type="submit" value="Create!" />
     </form>

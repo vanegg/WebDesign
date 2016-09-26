@@ -1,5 +1,8 @@
+<%= erb :_head%>
+
 <%i = 1%>
-<%@questions.each do |question|%>
+<%@myanswers.each do |answer|%>
+<%question = Question.find(answer.question_id)%>
 <fieldset>
     <legend>Question #<%=question.id%>:</legend>
     <% if @falla%>
@@ -21,11 +24,19 @@
       <input type="submit" value="See Answers!" />
     </form>
     <%end%>
-  <% if @answer_create%>
-    <%= erb :create_answer, locals: {question: question }%>
-  <%end%>
   <% if @answers%>
-    <%= erb :_answer, locals: {question: question }%>
+    <fieldset>
+      <legend>Answer #<%=answer.id%>:</legend>
+      <% if @falla%>
+        <p class= "fail"> No answer found</p>
+      <%end%>
+      <p><%=answer.text%></p>
+      <p>Votes: <%=answer.votes.length%></p>
+      <form action="/vote" method="POST">
+        <input type="hidden" name= "answer_id" value="<%=answer.id%>" />
+        <input type="submit" value="Vote it!" />
+      </form>
+    </fieldset>
   <%end%>
   </fieldset>
   <%i += 1%>

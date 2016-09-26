@@ -1,0 +1,8 @@
+<form action="/question/search" method="POST">
+  Buscar por id:       
+    <input type="text" placeholder= "Search" name="id"></input>
+    <input type="submit" value="Search!" />
+  </form>
+  <% if @falla%>
+    <p class= "fail"> No question found. Please try again</p>
+  <%end%>

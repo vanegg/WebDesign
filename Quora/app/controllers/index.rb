@@ -1,5 +1,6 @@
 get '/' do
   session.clear
+  @falla = false
   @notlog = params[:notlog]
   erb :index
 end
@@ -37,7 +38,7 @@ post '/user/login' do
   puts " SESSION ID ANTES #{session[:id]}"
    if user != nil
      session[:id] = user.id
-     redirect to ("/users/#{user.id}")
+     redirect to ("/users/#{user.id}/myquestions")
    else
     @falla = true
     erb :read_user
@@ -49,21 +50,34 @@ get '/users' do
   erb :all_users
 end
 # /******** END-READ USER ********/
+ 
+get '/users/:id/allquestions' do
+  puts "IN GET /users/:id"
+  @user = User.find(params[:id])
+  @questions = Question.all
+  erb :profile
+end
 
-before '/users/:id' do
+before '/users/:id/myquestions' do
   puts "IN BEFORE /users/:id"
  if session[:id] == nil
     notlog = true
     redirect to ("/?notlog=#{notlog}")
   end
 end
- 
-get '/users/:id' do
-  puts "IN GET /users/:id"
+
+get '/users/:id/myquestions' do
+  puts "IN GET /users/:id/myquestions"
   @user = User.find(params[:id])
-  @questions = Question.all
-  @question = Question.find(1)
+  @questions = @user.questions
   erb :profile
+end
+
+get '/users/:id/myanswers' do
+  puts "IN GET /users/:id/myanswers"
+  @myanswers = current_user.answers
+  @answers = true
+  erb :answers
 end
 
 # /********** UPDATE USER **********/
@@ -88,7 +102,7 @@ post '/user/update' do
     user.email = params[:email] if params[:email] != ""
     user.password = params[:password_new] if params[:password_new] != ""
     if user.save 
-      redirect to ("/users/#{user.id}")      
+      redirect to ("/users/#{user.id}/myquestions")      
     else
       redirect to ('/update?falla=true')
     end
@@ -128,25 +142,4 @@ end
 get '/logout' do
   session.clear
   erb :index
-end
-
-get '/info' do
-  erb :update_info
-end
-
-#ME QUEDE AQUIIIIIIIIIIIIIIIIIIII
-post '/vote' do
-  question_id = params[:question_id]
-  question = Question.find(question_id)
-  vote = Vote.create()
-  current_user.votes << vote
-  question.votes << vote
-  current_user.save
-  question.save
-  @questions = Question.all
-  erb :profile
-end
-
-get '/question/new' do
-  erb :create_question
 end
