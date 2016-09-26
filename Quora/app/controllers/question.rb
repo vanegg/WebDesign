@@ -4,6 +4,8 @@ get '/info' do
 end
 
 post '/vote' do
+  p params
+  p params[:question_id]
   vote = Vote.create()
   current_user.votes << vote
   if params[:question_id].nil?
@@ -17,9 +19,23 @@ post '/vote' do
     question.votes << vote
     question.save
   end
-  current_user.save
-  @questions = Question.all
-  erb :profile
+  current_user.save  
+
+   if request.xhr?
+    #AJAX
+    if params[:question_id].nil?
+      p "entro a answer"
+      answer.votes.length.to_s
+    else
+      p "entro a question "
+      question.votes.length.to_s
+    end
+   else
+    #HTML
+    @questions = Question.all
+    erb :profile
+   end
+
 end
 
 get '/question/new' do

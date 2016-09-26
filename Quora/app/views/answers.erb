@@ -9,8 +9,8 @@
       <p class= "fail"> No question found</p>
     <%end%>
     <p><%=question.text%></p>
-    <p>Votes: <%=question.votes.length%></p>
-    <form action="/vote" method="POST">
+    <p>Votes: <span class = "question_vote" id="vote_<%=question.id%>"><%=question.votes.length%></span></p>
+    <form class="btn_vote" action="/vote" method="POST">
       <input type="hidden" name= "question_id" value="<%=question.id%>" />
       <input type="submit" value="Vote it!" />
     </form>
@@ -31,8 +31,8 @@
         <p class= "fail"> No answer found</p>
       <%end%>
       <p><%=answer.text%></p>
-      <p>Votes: <%=answer.votes.length%></p>
-      <form action="/vote" method="POST">
+      <p>Votes: <span id="vote_<%=answer.id%>"><%=answer.votes.length%></span></p>
+      <form class="btn_vote" action="/vote" method="POST">
         <input type="hidden" name= "answer_id" value="<%=answer.id%>" />
         <input type="submit" value="Vote it!" />
       </form>

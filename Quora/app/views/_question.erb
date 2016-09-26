@@ -6,18 +6,18 @@
       <p class= "fail"> No question found</p>
     <%end%>
     <p><%=question.text%></p>
-    <p>Votes: <%=question.votes.length%></p>
-    <form action="/vote" method="POST">
-      <input type="hidden" name= "question_id" value="<%=question.id%>" />
+    <p>Votes: <span id="vote_<%=question.id%>"><%=question.votes.length%></span></p>
+    <form class="btn_vote" action="/vote" method="POST">
+      <input type="hidden" name="question_id" value="<%=question.id%>" />
       <input type="submit" value="Vote it!" />
     </form>
     <form action="/question/answers/new" method="POST">
-      <input type="hidden" name= "question_id" value="<%=question.id%>" />
+      <input type="hidden" name="question_id" value="<%=question.id%>" />
       <input type="submit" value="Answer it!" />
     </form>
     <% if !@answer_see%>
     <form action="/question/answers/" method="POST">
-      <input type="hidden" name= "question_id" value="<%=question.id%>" />
+      <input type="hidden" name="question_id" value="<%=question.id%>" />
       <input type="submit" value="See Answers!" />
     </form>
     <%end%>

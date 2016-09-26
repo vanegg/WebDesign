@@ -6,8 +6,8 @@
       <p class= "fail"> No answer found</p>
     <%end%>
     <p><%=answer.text%></p>
-    <p>Votes: <%=answer.votes.length%></p>
-    <form action="/vote" method="POST">
+    <p>Votes: <span id="vote_<%=answer.id%>"><%=answer.votes.length%></span></p>
+    <form class="btn_vote" action="/vote" method="POST">
       <input type="hidden" name= "answer_id" value="<%=answer.id%>" />
       <input type="submit" value="Vote it!" />
     </form>
