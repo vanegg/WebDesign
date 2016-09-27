@@ -1,0 +1,20 @@
+<p>Estas seguro que deseas eliminar tu usuario? Confirma con tu contraseña</p>
+
+<form action="/user/delete" method="POST">
+  <fieldset>
+    <legend>LOG IN:</legend>
+    <% if @falla%>
+      <p class= "fail"> Contraseña incorrecta</p>
+    <%end%>
+    <br>
+    Contraseña: 
+    <input type="text" placeholder="password" name="password">  
+    <br>
+    <br>
+    <input type="submit" value="Delete!" />
+    
+    </br>
+  </fieldset>
+</form>
+
+<%= erb :_return %>
