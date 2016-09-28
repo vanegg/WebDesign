@@ -1,7 +1,11 @@
 get '/' do
-  session.clear
-  @notlog = params[:notlog]
-  erb :index
+  if session[:id] == nil
+    session.clear
+    @notlog = params[:notlog]
+    erb :index
+  else
+    redirect to ("/users/#{session.id}")
+  end
 end
 
 # C R U D
@@ -54,7 +58,6 @@ end
  
 get '/users/:id' do
   puts "IN GET /users/:id"
-  @user = User.find(params[:id])
   erb :profile
 end
 # /******** END-READ USER ********/

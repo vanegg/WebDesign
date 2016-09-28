@@ -1,25 +1,54 @@
-<h1>Página Secreta</h1>
-<h2>Login Exitoso</h2>
+<h1>Survey Monkey Clon</h1>
 
-<p>BIENVENIDO <%= @user.name %></p>
-         
-<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+<h2>BIENVENIDO <%= current_user.name %></h2>
 
-<h2>Header Level 2</h2>
-         
-<ol>
-   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-   <li>Aliquam tincidunt mauris eu risus.</li>
-</ol>
+  <form id="btn_create" action="/survey" method="POST">
+    <% if @falla%>
+      <p class="fail"> Error creating new survey. Please try again</p>
+      <%end%>
+    <input type="text" name="survey_name" placeholder="Title" />
+    <input type="submit" value="Create Survey" />
+  </form>
 
-<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+  <h3>Authored Surveys</h3>
+  <table>
+  <tr>
+    <th>Title</th>
+    <th>URL</th>
+    <th>Statistics</th>
+  </tr>
+  <%current_user.surveys.each do |survey|%>
+  <tr>
+    <td><%=survey.name%></td>
+    <td><a href="#">lala.ly/survey/<%=survey.id%></a></td>
+    <% if survey.questions.first != nil %>
+    <td><%=survey.questions.first.responses.length%></td>
+    <%else%>
+    <td>0</td>
+    <%end%>
+  </tr>
+  <%end%>
+</table>
+<br>
 
-<h3>Header Level 3</h3>
+ <h3>Taken Surveys</h3>
+  <table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <%survey_name = []%>
+  <%current_user.responses.each do |response|%>
+    <%survey_name << Survey.find(response.survey_id).name%>
+  <%end%>
+  <%survey_name.uniq!%>
+  <%survey_name.each do |survey|%>
+  <tr>
+    <td><%=survey%></td>
+  </tr>    
+  <%end%>
+</table>
 
-<ul>
-   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-   <li>Aliquam tincidunt mauris eu risus.</li>
-</ul>
+<br>
 
 <!-- UPDATE -->
   <form action="/update" method="GET">

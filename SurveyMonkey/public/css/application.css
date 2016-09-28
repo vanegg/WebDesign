@@ -11,3 +11,15 @@ th {
 .fail {
   color: red;
 }
+
+#addquestion {
+  padding: 20px;
+}
+
+#addoption {
+  display: none;
+}
+
+.question_area {
+  background-color: #D8D8D8;
+}

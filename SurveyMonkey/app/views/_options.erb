@@ -1,0 +1,19 @@
+<div class = "question_area">
+  <%=question = current_user.surveys.last.questions.last%>
+  <%if question%>
+  <h2 id = "question_text"><%=question.text%></h2>
+  <%end%>
+  <ol>
+    question.options.each do |option|
+      <li> option.text</li>
+    end
+  </ol>
+  <div>
+    <p>
+      <input type="text" id="o_name" size="20" name="o_name" value="" placeholder="Option" />
+
+      <button id="btn_add_option" type="button"> Add Option</button>
+    </p>
+  </div>
+  <button id="done_question" type="button"> Done with question</button>
+</div>

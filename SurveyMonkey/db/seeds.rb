@@ -82,12 +82,12 @@ user2.responses << response3
 
 response4 = Response.create()
 option11.responses << response4
-question1.responses << response4
+question4.responses << response4
 survey2.responses << response4
 user1.responses << response4
 
 response5 = Response.create()
 option14.responses << response5
-question2.responses << response5
+question5.responses << response5
 survey2.responses << response5
 user1.responses << response5
