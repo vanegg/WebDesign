@@ -1,4 +1,3 @@
-var data = {};
 labels_i = [];
 series_i = [];
 max_options = 0;
@@ -10,45 +9,33 @@ $(".question").each(function(){
     max_options = a;
   }
 });
-obj = {};
+
+  obj = {};
 obj.values = []
   for (var i=0; i<max_options; i++) {
     v=[];
     obj = {};
     obj.values = []
     obj.label = 'option ' + i;
-    $("." + i).each(function(){
-      length = $(this).find(".o_length").text();
-      if (length == ""){
-        length = 0;
-      } else {
-        length = parseInt(length);
+
+    // $("." + i).each(function(){
+    $(".question").each(function(){  
+      opt = $(this).find("." + i).find(".o_length").text();
+      length = 0;
+      if (opt.length != 0) {
+        length = parseInt(opt);
       }
       v.push(length);
-    });
+  });
+    console.log(v);
     obj.values = v;
     series_i.push(obj);
   }
-  
-  console.log(series_i)
 
 
 data = {
   labels: labels_i,
    series: series_i
-  // series: [
-  //   {
-  //     label: 'Option 1',
-  //     values: [40, 8, 15, 16, 23,42 ]
-  //   },
-  //   {
-  //     label: 'Option 2',
-  //     values: [12, 43, 22, 11, 73, 25]
-  //   },
-  //   {
-  //     label: 'Option 3',
-  //     values: [31, 28, 14, 8, 15, 21]
-  //   },]
 };
 
 var chartWidth       = 300,
