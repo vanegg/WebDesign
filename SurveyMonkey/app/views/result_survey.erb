@@ -1,3 +1,25 @@
 <h1>Survey Monkey Clon</h1>
 
 <h2>Results</h2>
+  <h3><%=@survey.name%></h3>
+
+<meta charset="utf-8">
+<div id ="data">
+  <%@survey.questions.each do |question|%>
+    <div class= "question" id = "question<%=question.id%>">
+      <div class="q_text"> <%=question.text%></div>
+      <%i = 0%>
+      <%question.options.each do |option|%>
+        <div class = "option <%=i%>" id = "option<%=option.id%>">
+          <div class="o_text"><%=option.text%> </div>            
+          <div class="o_length"><%=option.responses.length%></div>         
+        </div>
+        <%i += 1%>
+      <%end%>      
+    </div>
+  <%end%>  
+</div>
+
+<svg class="chart"></svg>
+<script src="/js/graphic.js"></script>
+ 

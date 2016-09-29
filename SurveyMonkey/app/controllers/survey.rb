@@ -34,7 +34,6 @@ post '/create_survey' do
     current_user.surveys.last.questions << question
   end
   "/users/#{current_user.id}"
-  #erb :profile
 end
 
 get '/survey/answer/:id' do
@@ -62,5 +61,6 @@ post '/responses' do
 end
 
 get '/survey/results/:id' do
+  @survey = Survey.find(params[:id])
   erb :result_survey
 end

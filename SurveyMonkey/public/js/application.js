@@ -55,4 +55,5 @@ function done_question(){
 function question(){
   $("#survey_area").append("<div id='new_question'><p><input type='text' id='q_name' size='20' name='q_name' value='' placeholder='Question'/><button id='btn_add_question' type='button'> Add Question</button></p></div>");
 }
+
 });

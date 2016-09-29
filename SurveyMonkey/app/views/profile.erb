@@ -2,6 +2,14 @@
 
 <h2>BIENVENIDO <%= current_user.name %></h2>
 
+<svg width="30" height="30">
+  <circle cx="15" cy="15" r="15" fill="purple" />
+</svg>
+
+<svg width="30" height="30">
+  <circle cx="15" cy="15" r="15" fill="pink" />
+</svg>
+
   <form id="btn_create" action="/survey" method="POST">
     <% if @falla%>
       <p class="fail"> Error creating new survey. Please try again</p>
