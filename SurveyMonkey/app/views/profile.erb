@@ -6,8 +6,8 @@
     <% if @falla%>
       <p class="fail"> Error creating new survey. Please try again</p>
       <%end%>
-    <input type="text" name="survey_name" placeholder="Title" />
-    <input type="submit" value="Create Survey" />
+    <input type="text"21 name="survey_name" placeholder="Title" />
+    <input class="button" type="submit" value="Create Survey" />
   </form>
 
   <h3>Authored Surveys</h3>
@@ -20,7 +20,7 @@
   <%current_user.surveys.each do |survey|%>
   <tr>
     <td><%=survey.name%></td>
-    <td><a href="#">lala.ly/survey/<%=survey.id%></a></td>
+    <td><a href="/survey/results/<%=survey.id%>">lala.ly/survey/<%=survey.id%></a></td>
     <% if survey.questions.first != nil %>
     <td><%=survey.questions.first.responses.length%></td>
     <%else%>
@@ -38,7 +38,9 @@
   </tr>
   <%survey_name = []%>
   <%current_user.responses.each do |response|%>
+    <%if response.survey_id != nil%>
     <%survey_name << Survey.find(response.survey_id).name%>
+    <%end%>
   <%end%>
   <%survey_name.uniq!%>
   <%survey_name.each do |survey|%>
@@ -49,19 +51,37 @@
 </table>
 
 <br>
+<h3>Other Surveys</h3>
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <%surveys = []%>
+  <%Survey.all.each do |survey|%>
+    <%if Survey.find(survey.id).user_id != current_user.id%>
+      <%surveys << Survey.find(survey.id)%>
+    <%end%>
+  <%end%>
+  <%surveys.each do |survey|%>
+  <tr>
+    <td><%=survey.name%></td>
+    <td><a href="/survey/answer/<%=survey.id%>">lala.ly/survey/<%=survey.id%></a></td>
+  </tr>
+  <%end%>
+</table>
 
 <!-- UPDATE -->
   <form action="/update" method="GET">
-    <input type="submit" value="Update User!" />
+    <input class="button" type="submit" value="Update User!" />
   </form>
 
 <!-- DELETE-->
   <form action="/delete" method="GET">
-    <input type="submit" value="Delete User!" />
+    <input class="button" type="submit" value="Delete User!" />
   </form>
 
  <form action="/logout" method="POST">
-    <input type="submit" value="Log Out!" />
+    <input class="button" type="submit" value="Log Out!" />
   </form>
   <br>
 

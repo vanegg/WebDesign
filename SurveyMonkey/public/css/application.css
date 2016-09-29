@@ -23,3 +23,26 @@ th {
 .question_area {
   background-color: #D8D8D8;
 }
+
+table {
+  display: table;
+  width: 80%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  color: #167F92;
+  border-radius: 10px;
+  border: 1px solid #167F92;
+}
+
+.button {
+  background-color: #0B4C5F;
+  color : white;
+  border-radius: 10px;
+  text-align:center;
+}
+
+h1 {
+  background-color: #0B4C5F;
+  color : white;
+  text-align:center;
+}
