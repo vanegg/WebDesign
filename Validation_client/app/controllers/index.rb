@@ -17,10 +17,10 @@ post '/users' do
   user = User.new(name: params[:name], email: params[:email], password: params[:password])
   if user.save
     @falla = false
-  redirect to ("/")
+  url = "/"
   else
     @falla = true
-    erb :create_user
+    url = "/user/new"
   end
 end
 

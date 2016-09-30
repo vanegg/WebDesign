@@ -4,7 +4,7 @@
   <fieldset>
     <legend>SIGN UP:</legend>
     <% if @falla%>
-      <p class="fail"> Algún valor es inválido, revisa tus datos</p>
+      <p class="fail"> Something was wrong. Please try again</p>
     <%end%>
     Nombre:   
     <input id="name" type="text" placeholder="name" name="name">  
@@ -16,7 +16,7 @@
     <input id= "password" type="text" placeholder="password" name="password">
     <br>
       <ul>
-      <div class="error"></div>
+      <div class="error fail"></div>
       </ul>
     <br>
     <input class="button" id="sign_up" type="submit" value="Sign Up!" />
