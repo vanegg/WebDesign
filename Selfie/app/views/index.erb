@@ -1,0 +1,20 @@
+  <h1>¡Bienvenido!</h1>
+  
+      <% if @notlog%>
+      <p class= "fail"> **Necesitas hacer log in para entrar.**</p>
+    <%end%>
+
+    <!-- C R U D -->
+
+  <p> Inicia sesión o Registrate</p>
+
+  <!-- CREATE -->
+  <form action="/user/new" method="GET">
+    <input class="button"  type="submit" value="Sign Up!" />
+  </form>
+  <br>
+
+  <!-- READ -->
+  <form action="/login" method="GET">
+    <input class="button" type="submit" value="Log in!" />
+  </form>

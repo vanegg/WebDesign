@@ -1,0 +1,44 @@
+<h1>Welcome to Selfie!</h1>
+
+<nav>
+  <ul>
+    <li><a href="/">Profile</a></li>
+    <li><a href="/update">Update User!</a></li>
+    <li><a href="/delete">Delete User!</a></li>
+    <li><a href="/logout">Log Out!</a></li>
+  </ul>
+  <br clear="all">
+</nav>
+
+  <h3><%=@album.title%></h3>
+
+<% unless @photos.length == 0%>
+  <div class="carousel_controls">
+    <a href="#" id="previous_frame">&lt;</a>
+    <a href="#" id="next_frame">&gt;</a>
+  </div>
+  <div class="carousel">
+    <ul class="frames">
+      <% @photos.each do |photo| %>
+        <li> 
+          <img src="<%= photo.photo_url(:medium) %>">
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<%else%>
+  <p class= "fail"> **You don't have photos yet**</p>
+<%end%>
+
+<br>
+<fieldset>
+  <legend>Upload a new photo:</legend>
+  <form method="post" enctype='multipart/form-data' action="/upload">
+    <!-- Verificar que name corresponda al nombre/campo del modelo -->
+    <input type='file' name='photo[photo]'>
+    <input type="hidden" name='id_album' value="<%=@album.id%>">
+    <input class="button" type='submit' value='Upload!'>
+  </form>
+</fieldset>
+<br>
+<%= erb :_return %>

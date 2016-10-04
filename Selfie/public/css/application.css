@@ -1,0 +1,116 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+th {
+  text-align: left;
+}
+
+.fail {
+  color: red;
+}
+
+.button {
+  background-color: #0B4C5F;
+  color : white;
+  border-radius: 10px;
+  text-align:center;
+}
+
+.folder, .photos {
+  display: inline-block;
+}
+
+fieldset {
+  border-color: #0B4C5F;
+}
+
+#user_id {
+  display: none;
+}
+
+/*BARRA DE NAVEGACION*/
+nav {
+  margin: 0 auto;
+  height: 34px;
+  background-color: #0B4C5F;
+  margin-top: -16px;
+}
+
+nav ul {
+  padding-top: 9px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+nav ul li {
+  display: inline;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+ nav ul li a {
+  list-style-type: none;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+/*CAROUSEL*/
+
+.carousel{
+  overflow: hidden;
+  width: 100%;  
+}
+
+.frames {
+  list-style: none;
+  position: relative;
+  /*width: 100 * num_imagenes*/
+  width: 400%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  margin-left: 0;
+  left: 0;
+}
+
+.frames > li {
+  position: relative;
+  float: left;
+  /*width: 33.33333%;  (100 / número de imágenes) */
+  width: 33.3333333%; /*Entre 4*/
+}
+
+.carousel img {
+  display:block;
+  width:100%;
+  max-width:100%;
+}
+
+.carousel_controls a {
+  font-family: monospace;
+  text-decoration: none;
+  position: absolute;
+  /*margin-top: 99px;*/
+  margin-top: 180px;
+  width: 30px;
+  line-height: 30px;
+  background-color: #eee;
+  /*border: 1px solid #ddd;*/
+  border-radius: 30px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #7F7F7F;
+}
+
+a#previous_frame {
+  margin-left: -50px;
+}
+
+a#next_frame {
+  /*margin-left: 380px;*/
+  margin-left: 640px;
+}

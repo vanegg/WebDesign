@@ -1,6 +1,7 @@
 $(function() {
   length = '=100%';
   pos = 620;
+  i = 0;
 
   $("#previous_frame").on("click", function(){
     // console.log("Previous frame");
@@ -16,6 +17,7 @@ $(function() {
   });
 
   $("#next_frame").on("click", function(){
+    console.log(i++);
     console.log("Next frame");
     wl = parseInt($(".frames").css("margin-left"));
     // console.log(wl);
