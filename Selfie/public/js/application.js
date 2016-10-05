@@ -50,18 +50,19 @@ $(document).ready(function() {
     }
   });
   //*************** END VALIDATIONS ***************//
+
   url = '/user/'+ $("#user_id").text() + '/album/'
 
   $(".new_album").on("click",function(){
     console.log("Creating new album");
-    $("#folders").append('<div class="folder"><a href="<div id="url_name">'+ url +'</div>"><img src="http://1.bp.blogspot.com/-41_lXhAblng/UBwDl4TfeRI/AAAAAAAAANc/OOjiYMYzHqI/s1600/plantilla_carpeta_by_rikardojimeneez-d4x7806.png" height="100" width="100"></a><div class="title_album"><input type="input" name="name_album" value="Title.."><input class="button add_newalbum" type="submit" value="Add"></div></div>');
+    $("#folders").append('<div class="folder"><a class="album" href="/"><img src="/folder.png" alt="Folder_<%=album.title%>" height="100" width="100"></a><div class="title_album"><input type="input" name="name_album" value="Title.."><input class="button add_newalbum" type="submit" value="Add"></div></div>');
   });
 
   $(".container").on("click", ".add_newalbum", add_album);
 
   function add_album(){
     $.post('/create_album',$("input"), function(id){
-      $("a").last().attr("href", url + id);
+      $(".album").last().attr("href", url + id);
       $(".title_album").last().append('<div class="title_album">'+ $("input").val() +'</div>');
       $(".add_newalbum").remove();
       $(".title_album > input").remove();
@@ -69,19 +70,34 @@ $(document).ready(function() {
     
   }
 
-  // ****************** CAROUSEL ***************** //
+  // *************** SORTABLE ************** //
+
+  function sort_photos(){
+
+  }
+
+  $("#sortable").sortable();
+
+  // *************** CAROUSEL ************** //
   var slider    = $('.frames');
   var liItems   = $('.frames li');
   var imageNumber = liItems.length;
   var siguiente = $('#next_frame');
   var anterior  = $('#previous_frame');
 
-   slider.css("width", imageNumber * 100 +'%');
+   slider.css("width", (imageNumber) * 100 +'%');
+   console.log(slider.attr("width"));
   $('.frames li:last').insertBefore('.frames li:first');
+  slider.css('margin-left', '-'+1+'%');
 
   if(imageNumber <= 1){
     $('.carousel_controls').css("visibility", "hidden");
-  } 
+    slider.css('margin', '0%');
+  } else if(imageNumber == 2){
+    //se ajusta al número de imagenes cambia width del ul para que se ajusten
+    liItems.css("width", 100 / imageNumber+'%');
+  }
+
   siguiente.click(function(){
     moverDerecha();
   });

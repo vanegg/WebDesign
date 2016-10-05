@@ -124,7 +124,7 @@ post '/user/delete' do
   end
 end
 # /******** END-DELETE USER ********/
-post '/logout' do
+get '/logout' do
   session.clear
   erb :index
 end

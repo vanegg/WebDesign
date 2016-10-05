@@ -3,7 +3,7 @@ post '/upload' do
   @photo.save!
   @album = Album.find(params[:id_album])
   @album.photos << @photo
-  redirect '/'
+  redirect "/user/#{current_user.id}/album/#{@album.id}"
 end
 
 get '/user/:id_user/album/:id_album' do 

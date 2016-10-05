@@ -18,8 +18,7 @@
     <%current_user.albums.each do |album|%>
       <div class='folder'>
         <a href="/user/<%=current_user.id%>/album/<%=album.id%>">
-          <img src="http://1.bp.blogspot.com/-41_lXhAblng/UBwDl4TfeRI/AAAAAAAAANc/OOjiYMYzHqI/s1600/plantilla_carpeta_by_rikardojimeneez-d4x7806.png" height="100" width="100">
-          <!-- <img src="/folder.png" alt="Folder_<%=album.title%>" height="100" width="100"> -->
+           <img src="/folder.png" alt="Folder_<%=album.title%>" height="100" width="100"> 
         </a>
         <div class="title_album"><%=album.title%></div>
       </div>
@@ -30,24 +29,21 @@
 </fieldset>
 <br>
 
-
-<!-- Verificar que sea post, y que tenga el atributo enctype -->
-<!-- <form method="post" enctype='multipart/form-data' action="/upload">
-<! Verificar que name corresponda al nombre/campo del modelo -->
- <!--  <input type='file' name='photo[photo]'>
-  <input type="hidden" name='album' value="<%=%>">
-  <br/>
-  <input class="button" type='submit' value='Upload!'>
-</form> -->
 <fieldset>
   <legend>Your photos:</legend>
-  <%current_user.albums.each do |album|%>
-  <% album.photos.each do |photo| %>
-    <div class="photos"> 
-      <a href="<%= photo.photo_url(:medium) %>">
-      <img src="<%= photo.photo_url(:thumb) %>">
-      </a>
-    </div>
-  <% end %>
-  <%end%>
+  Reorder photos using the mouse:
+  <br>
+  <ul id="sortable">
+      <%current_user.albums.each do |album|%>
+        <% album.photos.each do |photo| %>
+          <div class="photos"> 
+            <li><a href="<%= photo.photo_url(:medium) %>">
+            <img src="<%= photo.photo_url(:thumb) %>">
+            </a></li>
+          </div>
+        <% end %>
+      <%end%>
+  </ul>
 </fieldset>
+
+<script></script>

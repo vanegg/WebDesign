@@ -17,11 +17,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :medium, :from_version => :large do
-    process :resize_to_fit => [800, 600]
+    process :resize_to_fill => [600, 480]
   end
 
   version :small, :from_version => :medium do
-    process :resize_to_fit => [240, 180]
+    process :resize_to_fill => [240, 180]
   end
 
   version :thumb, :from_version => :small do

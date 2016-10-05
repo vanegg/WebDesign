@@ -68,7 +68,7 @@ nav ul li {
   list-style: none;
   position: relative;
   /*width: 100 * num_imagenes*/
-  width: 400%;
+  /*width: 300%;*/
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -80,7 +80,6 @@ nav ul li {
   position: relative;
   float: left;
   /*width: 33.33333%;  (100 / número de imágenes) */
-  width: 33.3333333%; /*Entre 4*/
 }
 
 .carousel img {
@@ -89,7 +88,7 @@ nav ul li {
   max-width:100%;
 }
 
-.carousel_controls a {
+.carousel_controls p {
   font-family: monospace;
   text-decoration: none;
   position: absolute;
@@ -106,11 +105,17 @@ nav ul li {
   color: #7F7F7F;
 }
 
-a#previous_frame {
+p#previous_frame {
   margin-left: -50px;
 }
 
-a#next_frame {
+p#next_frame {
   /*margin-left: 380px;*/
   margin-left: 640px;
+}
+
+#sortable li {
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
 }
