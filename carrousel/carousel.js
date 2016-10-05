@@ -5,10 +5,6 @@
   var liItems   = $('.frames li');
   //Saber el numero de elementos
   var imageNumber = liItems.length;
-  // almacenar botones en una variable
-  var siguiente = $('#next_frame');
-  var anterior  = $('#previous_frame');
-
 
   //se ajusta al número de imagenes cambia width del ul para que se ajusten
   // slider.css("width", imageNumber * 100 +'%');
@@ -19,11 +15,11 @@
 
 
 
-  siguiente.click(function(){
+  $('#next_frame').click(function(){
     moverDerecha();
   });
 
-  anterior.click(function(){
+  $('#previous_frame').click(function(){
     moverIzquierda();
   });
 
