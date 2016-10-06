@@ -1,0 +1,24 @@
+<%= erb :_header %>
+
+<h4>Has ingresado como: @<%= CLIENT.user.screen_name%></h4>
+
+<form action="/tweet" method="POST">
+  <fieldset>
+    <legend>Tweetea:</legend>
+    <%if @fail%>
+      <div class= "fail">
+        Your tweet has more than 140 characters. Please try again. 
+      </div>
+    <%end%>
+    <input type="text" name="tweet" placeholder="Tweet">
+    <input class="button" type="submit" name="btn_tweet" value="Tweet! :D" />
+  </fieldset>
+</form>
+<br>
+<form action="/fetch" method="POST">
+  <fieldset>
+    <legend>Busca los tweets de un amigo:</legend>
+    <input type="text" name="user" placeholder="User">
+    <input class="button" id="signup" type="submit" value="Buscar!" />
+  </fieldset>
+</form>
