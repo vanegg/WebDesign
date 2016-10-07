@@ -21,7 +21,7 @@ post '/tweet' do
     @fail = true
     erb :index
   end
-  redirect to ("/user/#{params[:user]}")
+  redirect to ("/")
 end
 
 get '/get/:handle' do
@@ -38,20 +38,40 @@ get '/user/:username' do
   else
     user = Twitteruser.create(name: params[:username]) 
   end
-  p user
-  #Método que regresa true si los tweets estan desactualizados 
-  if user.tweets.length == 0
-    # Pide a Twitter los últimos tweets del usuario y los guarda en la base de datos
-    @handle = CLIENT.user_timeline(params[:username])
-    @handle.each do |tweet|
-      t = Tweet.create(text: tweet.text)
-    end
-  end
 
-  # Se hace una petición por los ultimos 10 tweets a la base de datos. 
-  @tweets =
+  #Método que regresa true si los tweets estan desactualizados
+  if outdated_tweets?(user)
+    # Tweets desactualizados
+    handle = CLIENT.user_timeline(params[:username])
+    
+    if user.tweets.length == 0
+      handle.each do |tweet|
+        t = Tweet.create(text: tweet.text, date: tweet.created_at)
+        user.tweets << t
+      end
+    else
+      handle.each do |tweet|
+        existed_tweet = Tweet.exists?(text: tweet.text, date: tweet.created_at)
+        unless existed_tweet
+          t = Tweet.create(text: tweet.text, date: tweet.created_at)
+          user.tweets << t
+        end
+      end
+    end
+ end
+
   @name = CLIENT.user(params[:handle]).screen_name
+  @tweets = user.tweets 
   erb :read_tweets
+end
+
+def outdated_tweets?(user)
+  if user.tweets.length == 0
+    true
+  else
+    user_tmp = CLIENT.user(params[:username])
+    !(user_tmp.tweet.text == user.tweets.first.text)
+  end
 end
 
 # NAME=TwitterAPIVanessa
