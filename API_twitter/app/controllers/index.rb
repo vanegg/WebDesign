@@ -1,7 +1,5 @@
 # https://github.com/sferik/twitter
 get '/' do
-  # La siguiente linea hace render de la vista 
-  # que esta en app/views/index.erb
   erb :index
 end
 
@@ -24,12 +22,12 @@ post '/tweet' do
   redirect to ("/")
 end
 
-get '/get/:handle' do
-  p "/HANDLE"
-  @name = CLIENT.user(params[:handle]).screen_name
-  @handle = CLIENT.user_timeline(params[:handle])
-  erb :read_tweets
-end
+# get '/get/:handle' do
+#   p "/HANDLE"
+#   @name = CLIENT.user(params[:handle]).screen_name
+#   @handle = CLIENT.user_timeline(params[:handle])
+#   erb :read_tweets
+# end
 
 get '/user/:username' do
   # Se crea un TwitterUser si no existe en la base de datos de lo contrario trae de la base al usuario. 
@@ -38,12 +36,13 @@ get '/user/:username' do
   else
     user = Twitteruser.create(name: params[:username]) 
   end
-
+  
   #Método que regresa true si los tweets estan desactualizados
   if outdated_tweets?(user)
     # Tweets desactualizados
+    # redirect to("/api/#{params[:username]}")
     handle = CLIENT.user_timeline(params[:username])
-    
+
     if user.tweets.length == 0
       handle.each do |tweet|
         t = Tweet.create(text: tweet.text, date: tweet.created_at)
@@ -58,19 +57,32 @@ get '/user/:username' do
         end
       end
     end
- end
+    @method = "PETICION TWITTER"
+  else
+    @method = "DATABASE"
+    # redirect to("/db/#{params[:username]}")
+  end
 
-  @name = CLIENT.user(params[:handle]).screen_name
-  @tweets = user.tweets 
-  erb :read_tweets
+    @name = params[:username]
+    @tweets = user.tweets 
+    erb :read_tweets
+  
+end
+
+get '/db/:username' do
+  
+end
+
+get '/api/:username' do
+
 end
 
 def outdated_tweets?(user)
   if user.tweets.length == 0
     true
   else
-    user_tmp = CLIENT.user(params[:username])
-    !(user_tmp.tweet.text == user.tweets.first.text)
+    segs = (Time.now.utc - user.tweets.order(date: :desc).first.created_at).to_i
+    segs <= 3600 ? false : true
   end
 end
 

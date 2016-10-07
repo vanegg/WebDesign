@@ -2,7 +2,7 @@ class CreateTweet < ActiveRecord::Migration
   def change
     create_table :tweets do |t|
       t.string :text
-      t.date :date
+      t.datetime :date
       t.belongs_to :twitteruser
       t.timestamps
     end

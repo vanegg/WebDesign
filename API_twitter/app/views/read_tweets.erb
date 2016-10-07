@@ -2,10 +2,15 @@
 
 <h3>Tweets de: <%=@name%></h3>
 
+<h4>Regresado por: <%=@method%></h4>
+<div class="spinner"></div>
+
+<%if @tweets%>
 <fieldset>
   <%@tweets.order(date: :desc).each do |tweet|%>
     <p><%=tweet.date%>: <%=tweet.text%></p>
   <%end%>
 </fieldset>
+<%end%>
 
 <%= erb :_return %>

@@ -1,6 +1,6 @@
 <%= erb :_header %>
 
-<h4>Has ingresado como: @<%= CLIENT.user.screen_name%></h4>
+<h4>Has ingresado como: @</h4>
 
 <form action="/tweet" method="POST">
   <fieldset>
@@ -19,6 +19,6 @@
   <fieldset>
     <legend>Busca los tweets de un amigo:</legend>
     <input type="text" name="user" placeholder="User">
-    <input class="button" id="signup" type="submit" value="Buscar!" />
+    <input class="button" id="search" type="submit" value="Buscar!" />
   </fieldset>
 </form>
