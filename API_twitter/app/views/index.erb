@@ -2,18 +2,14 @@
 
 <h4>Has ingresado como: @</h4>
 
-<form action="/tweet" method="POST">
-  <fieldset>
-    <legend>Tweetea:</legend>
-    <%if @fail%>
-      <div class= "fail">
-        Your tweet has more than 140 characters. Please try again. 
-      </div>
-    <%end%>
-    <input type="text" name="tweet" placeholder="Tweet">
-    <input class="button" type="submit" name="btn_tweet" value="Tweet! :D" />
-  </fieldset>
-</form>
+  <form id="tweetear" action="/tweet" method="POST">
+    <fieldset>
+      <legend>Tweetea:</legend>    
+      <input type="text" name="tweet" placeholder="Tweet">
+      <input class="button" type="submit" name="btn_tweet" value="Tweet! :D" />
+      <div id="new_tweet_section"></div>  
+    </fieldset>
+  </form>
 <br>
 <form action="/fetch" method="POST">
   <fieldset>

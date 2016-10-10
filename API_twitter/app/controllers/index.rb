@@ -1,20 +1,18 @@
 # https://github.com/sferik/twitter
 get '/' do
+  @fail = params[:fail]
   erb :index
 end
 
 post '/tweet' do
   p "/TWEET"
   tweet = params[:tweet]
-  p tweet.length
   if tweet.length <= 140
-    @fail = false
-    CLIENT.update(tweet)
+    @tweet = CLIENT.update(tweet)
+    erb :_new_tweet, layout: false
   else
-    @fail = true
-    erb :index
+    "true"
   end
-  redirect to ("/")
 end
 
 post '/fetch' do
@@ -22,13 +20,6 @@ post '/fetch' do
   # Se crea un TwitterUser si no existe en la base de datos de lo contrario trae de la base al usuario. 
   redirect to ("/user/#{params[:user]}")
 end
-
-# get '/get/:handle' do
-#   p "/HANDLE"
-#   @name = CLIENT.user(params[:handle]).screen_name
-#   @handle = CLIENT.user_timeline(params[:handle])
-#   erb :read_tweets
-# end
 
 get '/user/:username' do
   unless Twitteruser.exists?(name: params[:username])
@@ -41,7 +32,6 @@ get '/user/:username' do
     @wait = true
     @method = "PETICION TWITTER"
   else
-    p "Entrando a database"
     @wait = false
     @method = "DATABASE"
     @tweets = user.tweets 
@@ -70,7 +60,6 @@ post '/api/:username' do
       end
     end
     @tweets = user.tweets
-    "lalala"
     erb :_tweets, layout: false
 end
 
