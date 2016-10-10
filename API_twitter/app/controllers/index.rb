@@ -3,11 +3,6 @@ get '/' do
   erb :index
 end
 
-post '/fetch' do
-  p "/FETCH"
-  redirect to ("/user/#{params[:user]}")
-end
-
 post '/tweet' do
   p "/TWEET"
   tweet = params[:tweet]
@@ -22,6 +17,12 @@ post '/tweet' do
   redirect to ("/")
 end
 
+post '/fetch' do
+  p "/FETCH"
+  # Se crea un TwitterUser si no existe en la base de datos de lo contrario trae de la base al usuario. 
+  redirect to ("/user/#{params[:user]}")
+end
+
 # get '/get/:handle' do
 #   p "/HANDLE"
 #   @name = CLIENT.user(params[:handle]).screen_name
@@ -30,19 +31,30 @@ end
 # end
 
 get '/user/:username' do
-  # Se crea un TwitterUser si no existe en la base de datos de lo contrario trae de la base al usuario. 
-  if Twitteruser.exists?(name: params[:username])
-    user = Twitteruser.find_by(name: params[:username])
-  else
+  unless Twitteruser.exists?(name: params[:username])
     user = Twitteruser.create(name: params[:username]) 
+  else
+    user = Twitteruser.find_by(name: params[:username])
   end
-  
   #Método que regresa true si los tweets estan desactualizados
   if outdated_tweets?(user)
-    # Tweets desactualizados
-    # redirect to("/api/#{params[:username]}")
-    handle = CLIENT.user_timeline(params[:username])
+    @wait = true
+    @method = "PETICION TWITTER"
+  else
+    p "Entrando a database"
+    @wait = false
+    @method = "DATABASE"
+    @tweets = user.tweets 
+  end
+    p "Redirigiendo"
+    @name = params[:username]
+    erb :read_tweets  
+end
 
+post '/api/:username' do
+  user = Twitteruser.find_by(name: params[:username])
+    # Tweets desactualizados
+  handle = CLIENT.user_timeline(params[:username])
     if user.tweets.length == 0
       handle.each do |tweet|
         t = Tweet.create(text: tweet.text, date: tweet.created_at)
@@ -57,24 +69,9 @@ get '/user/:username' do
         end
       end
     end
-    @method = "PETICION TWITTER"
-  else
-    @method = "DATABASE"
-    # redirect to("/db/#{params[:username]}")
-  end
-
-    @name = params[:username]
-    @tweets = user.tweets 
-    erb :read_tweets
-  
-end
-
-get '/db/:username' do
-  
-end
-
-get '/api/:username' do
-
+    @tweets = user.tweets
+    "lalala"
+    erb :_tweets, layout: false
 end
 
 def outdated_tweets?(user)
