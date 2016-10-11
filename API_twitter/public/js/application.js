@@ -3,13 +3,15 @@ $(document).ready(function() {
  $.get().always(function(){
   console.log("GETS")
   url = window.location.pathname;
-  url_tweet = (url).indexOf("/user/");
+
+  ///////////// SEARCH TWEETS OF AN USER
+  url_tweet = (url).indexOf("/user/search/");
   if(url_tweet >= 0){
     console.log($("#method").text());
     if ($("#method").text() != "DATABASE"){
 
       console.log("Llendo a Peticion API Twitter");
-      username = url.substring(url.indexOf("user/") + 4)
+      username = url.substring(url.indexOf("search/") + 6)
 
       $.post('/api' + username, function(partial){
          $(".spinner").css("display", "none");
@@ -17,6 +19,22 @@ $(document).ready(function() {
       });
     }
   }
+  //////////// SEARCH TWEETS OF CURRENT USER
+  url_tweet = (url).indexOf("/users/");
+  if(url_tweet >= 0){
+
+    console.log($("#method").text() + " users");
+    if ($("#method").text() != "DATABASE"){
+      $('.wait_spinner').append('<img id="wait" src="/flickr.gif">');
+      console.log("Llendo a Peticion API Twitter");
+      username = $("#current_user").text();
+      $.post('/api/' + username, function(partial){
+         $(".wait_spinner").css("display", "none");
+         $('.tweets_area').append(partial);    
+      });
+    }
+  }
+
  });
 
  $("#tweetear").on("submit", function(event){
@@ -37,6 +55,7 @@ $(document).ready(function() {
         if (partial != "true"){
           $('#new_tweet_section').append(partial);   
           $('input[name="btn_tweet"]').prop('disabled', false);
+          $('input[name="tweet"]').val('');
         } else {
          $('#new_tweet_section').append('<div class= "fail">Something went wrong. Please try again.</div>');
          $('input[name="btn_tweet"]').prop('disabled', false);

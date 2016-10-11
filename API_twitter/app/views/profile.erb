@@ -1,0 +1,39 @@
+<%= erb :_header %>
+<%if logged_in?%>
+  
+  <h4>Has ingresado como: @<span id="current_user"><%=current_user.name%></span></h4>
+<%end%>
+<form id="tweetear" action="/tweet" method="POST">
+    <fieldset>
+      <legend>Tweetea:</legend>    
+      <input type="text" name="tweet" placeholder="Tweet">
+      <input class="button" type="submit" name="btn_tweet" value="Tweet! :D" />
+      <div id="new_tweet_section"></div>  
+    </fieldset>
+</form>
+
+<h5>Regresado por: <span id="method"><%=@method%></span></h5>
+<div class= "tweets_area">
+  Tus tweets:
+<%if @wait%>
+  <div class="wait_spinner"></div>
+<%end%>
+  <%if @tweets%>
+  <br>
+    <%= erb :_tweets %>
+  <%end%>
+</div>
+
+<form action="/fetch" method="POST">
+  <fieldset>
+    <legend>Busca los tweets de un amigo:</legend>
+    <input type="text" name="user" placeholder="User">
+    <input class="button" id="search" type="submit" name="btn_search" value="Buscar!" />
+  </fieldset>
+</form>
+
+<%= erb :_return %>
+
+<form action="/sign_out" method="GET">
+  <input class="button" type="submit" name="btn_singout" value="Log out!" />
+</form>
