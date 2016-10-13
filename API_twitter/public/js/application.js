@@ -15,10 +15,10 @@ $(document).ready(function() {
 
       console.log("Llendo a Peticion API Twitter");
       username = url.substring(url.indexOf("search/") + 6)
-
       $.post('/api' + username, function(partial){
          $(".spinner").css("display", "none");
-         $('.tweets_area').append(partial);    
+         $('.tweets_area').append(partial);  
+
       });
     }
   }
@@ -115,43 +115,5 @@ function request_job(job_id, section){
         $(".spinner").css("display", "none");
       }
   });
-
-// setTimeout(request_job(jid),1000);
-
-// $("#tweetear").on("submit", function(event){
-//     event.preventDefault();
-//     new_tweet = $('#new_tweet_section');
-//     btn_tweet = $('input[name="btn_tweet"]');
-//     tweet = $('input[name="tweet"]');
-    
-//     btn_tweet.prop('disabled', true);
-//     new_tweet.empty();
-//     new_tweet.append('<img id="wait" src="/flickr.gif">');
-
-//     if (tweet.val().length >= 140){
-//       btn_tweet.prop('disabled', false);
-//       new_tweet.empty();
-//       new_tweet.append('<div class= "fail">Your tweet has more than 140 characters. Please try again.</div>');
-//     } else {
-//       t = {};
-//       t.tweet = tweet;
-//       $.post('/tweet',t, function(partial){
-//         new_tweet.empty();      
-//         if (partial != "fail"){
-//           new_tweet.append(partial);
-//           jid =parseInt($(".jid").text());   
-//           btn_tweet.prop('disabled', false);
-//           tweet.val('');
-//         } else {
-//          new_tweet.append('<div class= "fail">Something went wrong. Please try again.</div>');
-//          btn_tweet.prop('disabled', false);
-//         }
-//       });
-//     }
-//   });
-
-
-
-
 
 });
