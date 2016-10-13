@@ -21,6 +21,10 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'twitter'
 require 'oauth'
+require 'sidekiq'
+require 'sidekiq/api'
+require 'redis'
+
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 

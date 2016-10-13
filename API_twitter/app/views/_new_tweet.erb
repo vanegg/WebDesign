@@ -1,4 +1,8 @@
 <fieldset>
   <legend>Your tweet:</legend>     
     <p> <%=@tweet.text%></p>
+    <%if @jid%>
+    <p class="jid"><%=@jid%></p>
+    <%end%>
 </fieldset>
+

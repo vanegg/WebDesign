@@ -3,6 +3,7 @@
   
   <h4>Has ingresado como: @<span id="current_user"><%=current_user.name%></span></h4>
 <%end%>
+
 <form id="tweetear" action="/tweet" method="POST">
     <fieldset>
       <legend>Tweetea:</legend>    
@@ -12,18 +13,6 @@
     </fieldset>
 </form>
 
-<h5>Regresado por: <span id="method"><%=@method%></span></h5>
-<div class= "tweets_area">
-  Tus tweets:
-<%if @wait%>
-  <div class="wait_spinner"></div>
-<%end%>
-  <%if @tweets%>
-  <br>
-    <%= erb :_tweets %>
-  <%end%>
-</div>
-
 <form action="/fetch" method="POST">
   <fieldset>
     <legend>Busca los tweets de un amigo:</legend>
@@ -31,6 +20,28 @@
     <input class="button" id="search" type="submit" name="btn_search" value="Buscar!" />
   </fieldset>
 </form>
+
+<form id="btn_tweet_later" action="/later" method="POST">
+  <fieldset>
+    <legend>Tweetea despues:</legend>
+    <input type="text" name="text" placeholder="Text..">
+    <input type="text" name="time" placeholder="In how much time?">
+    <input class="button" type="submit" name="btn_later" value="Later!" />
+  </fieldset>
+  <div id="later_tweet_section"></div>
+</form>
+
+<h5>Regresado por: <span id="method"><%=@method%></span></h5>
+<div class= "tweets_area">
+  Tus tweets:
+<%if @wait%>
+  <div class="wait_spinner"><img id="wait" src="/flickr.gif"></div>
+<%end%>
+  <%if @tweets%>
+  <br>
+    <%= erb :_tweets %>
+  <%end%>
+</div>
 
 <%= erb :_return %>
 

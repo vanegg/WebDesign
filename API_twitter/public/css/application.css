@@ -52,3 +52,7 @@ fieldset {
 #wait {
   margin: 0 auto;
 }
+
+.jid {
+  display: none;
+}

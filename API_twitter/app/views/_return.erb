@@ -1,5 +1,5 @@
 <%if logged_in?%>
-  <form action='/users/<%=current_user.id%>' method="GET">  
+  <form action='/users/<%=current_user.name%>' method="GET">  
     <input class="button" type="submit" value="Regresar" />
   </form>
 <%else%>
