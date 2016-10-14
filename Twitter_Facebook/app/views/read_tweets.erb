@@ -1,0 +1,13 @@
+<%= erb :_header %>
+
+  <h3>Tweets de: <%=@name%></h3>
+  <h4>Regresado por: <span id="method"><%=@method%></span></h4>
+  <%if @wait%>
+  <div class="spinner"></div>
+  <%end%>
+  <div class="tweets_area">
+  <%if @tweets%>
+    <%= erb :_tweets %>
+  <%end%>
+  </div>
+<%= erb :_return %>

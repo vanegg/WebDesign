@@ -1,0 +1,21 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+th {
+  text-align: left;
+}
+
+#img_login, #img_logout{
+  width: 70px;
+  height: 30px;
+  border-radius: 2px;
+}
+
+.button {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}

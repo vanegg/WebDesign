@@ -1,0 +1,32 @@
+<%= erb :_header %>
+
+<%if !logged_in?%>
+  <h3>Bienvenido! Por favor inicia sesión para entrar a la aplicación</h3>
+
+  <form action="/sign_in" method="GET">
+    <fieldset>
+      <legend>Inicia Sesion:</legend>
+      <input class="button" type="submit" name="btn_signin" value="Log in!" />
+    </fieldset>
+  </form>
+<%else%>
+
+<form action="/sign_out" method="GET">
+    <fieldset>
+      <legend>Finaliza Sesion:</legend>
+      <input class="button" type="submit" name="btn_singout" value="Log out!" />
+    </fieldset>
+  </form>
+
+<%end%>
+
+<br>
+<form action="/fetch" method="POST">
+  <fieldset>
+    <legend>Busca los tweets de un amigo:</legend>
+    <input type="text" name="user" placeholder="User">
+    <input class="button" id="search" type="submit" name="btn_search" value="Buscar!" />
+  </fieldset>
+</form>
+
+<br>

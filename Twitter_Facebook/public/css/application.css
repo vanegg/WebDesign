@@ -1,0 +1,58 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+/*  border: 1px dotted black;*/
+}
+th {
+  text-align: left;
+}
+
+.fail {
+  color: red;
+}
+
+.button {
+  background-color: #0B4C5F;
+  color : white;
+  border-radius: 10px;
+  text-align:center;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  background-color: #0B4C5F;
+  border-radius: 10px;
+}
+
+fieldset {
+  border-color: #0B4C5F;
+  border-radius: 10px;
+}
+
+.spinner {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.8)
+              url('/flickr.gif')
+              50% 50%
+              no-repeat;
+}
+
+#load {
+  display
+}
+
+#wait {
+  margin: 0 auto;
+}
+
+.jid {
+  display: none;
+}

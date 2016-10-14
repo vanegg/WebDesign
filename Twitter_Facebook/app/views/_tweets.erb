@@ -1,0 +1,5 @@
+<fieldset>
+  <%@tweets.order(date: :desc).each do |tweet|%>
+    <p><%=tweet.date%>: <%=tweet.text%></p>
+  <%end%>
+</fieldset>

@@ -1,0 +1,22 @@
+<%if logged_in?%>
+<h1>Bienvenido <%=current_user.name%>!</h1>
+<p>Status:</p>
+<p>email:<%=current_user.email%></p>
+<p>provider:<%=current_user.provider%></p>
+<p>uid:<%=current_user.uid%></p>
+<p>oauth_token:<%=current_user.oauth_token%></p>
+<p>oauth_expires_at:<%=current_user.oauth_expires_at%></p>
+<%end%>
+
+Cumpleaños: <%=@birthday%>
+<%if @feed%>
+  <%@feed.each  do |f|%>
+     <p><%=f%></p>
+  <%end%>
+<%end%>
+
+<button class= "button btn_post">POST!</button>
+
+<button class= "button btn_logout">
+  <img id ="img_logout" src="/fb_logout.png">
+</button>
